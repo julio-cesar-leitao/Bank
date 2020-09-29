@@ -43,7 +43,7 @@
 
 				/////////////////////////////
 				// Deployed Contract's Adress
-				var address = "0xB40dCa2c4b6B84C1131eBDdCf3df6D2f294B0ba8"
+				var address = "0xeD08acB1e362000a8987933D566b5Dc59f29C844"
         		// Deployed Contract's ABI
 				var abi = [
 						{
