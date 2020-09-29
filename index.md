@@ -1,7 +1,7 @@
 <html>
     <body>
         <div>
-			<p> NOVO Bank DApp</p>
+			<p> Bank DApp</p>
 			<input type="text" id="amount">
   			<p>Balance: <a id='balance'></a></p>
   			<button id='deposit'>Deposit</button>
