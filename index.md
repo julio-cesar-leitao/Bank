@@ -1,17 +1,19 @@
 <html>
     <body>
         <div>
-			<p> Bank DApp</p>
+			<p>Bank DApp</p>
 			<input type="text" id="amount">
   			<p>Balance: <a id='balance'></a></p>
   			<button id='deposit'>Deposit</button>
-  			<button id='withdraw'>withdraw</button>
+  			<button id='withdraw'>Withdraw</button>
   			<p>Account Connected: <a id='coinbase'></a></p>
 			<p>Actual Block Number: <a id='blockNumber'></a></p>
+			<p>Contract Number: <a id='address'></a></p>
 	    </div>
-
-        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+		
+		<!-- To use web3, jquery and materialize (for toast warnings) libs -->
+		<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
         <script>
@@ -23,8 +25,8 @@
                     web3 = new Web3(web3.currentProvider);
 
                 } else {
-			    // Use localhost provider
-                    //web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.0.14:8545"));
+			    // Use localhost provider or some IP address
+                    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
                 }
 
 				/////////////////////////////
@@ -33,18 +35,23 @@
 				web3.eth.getBlockNumber().then(console.log);
 				web3.eth.isMining().then(console.log);
 
+				// Create variables to use on html page
 				web3.eth.getCoinbase().then(function(coinbase){
 					$('#coinbase').html(coinbase);
 				})
 
+				// Create variables to use on html page
 				web3.eth.getBlockNumber().then(function(blockNumber){
 					$('#blockNumber').html(blockNumber);
 				})
 
 				/////////////////////////////
-				// Deployed Contract's Adress
+				// Sample of a contract's address deployed on Ropsten test network
 				var address = "0xeD08acB1e362000a8987933D566b5Dc59f29C844"
-        		// Deployed Contract's ABI
+				// Deployed Contract's Adress, substitute here with your contract's address
+				// var address = "0xB40dCa2c4b6B84C1131eBDdCf3df6D2f294B0ba8"
+				$('#address').html(address)
+				// Deployed Contract's ABI
 				var abi = [
 						{
 							"constant": false,
@@ -95,7 +102,9 @@
 							"type": "function"
 						}
 					];
-                contract = new web3.eth.Contract(abi, address);
+				
+				// connect, via web3, your variable contract to the deployed contract, using his ABI and address	
+				contract = new web3.eth.Contract(abi, address);
                 contract.methods.getBalance().call().then(function(bal)
                 {
                     $('#balance').html(bal);
