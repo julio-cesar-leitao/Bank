@@ -8,7 +8,7 @@
   			<button id='withdraw'>Withdraw</button>
   			<p>Account Connected: <a id='coinbase'></a></p>
 			<p>Actual Block Number: <a id='blockNumber'></a></p>
-			<p>Contract Number: <a id='address'></a></p>
+			<p>Contract Address: <a id='address'></a></p>
 	    </div>
 		
 		<!-- To use web3, jquery and materialize (for toast warnings) libs -->
