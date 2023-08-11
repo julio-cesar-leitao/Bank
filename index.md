@@ -47,8 +47,10 @@
 
 				/////////////////////////////
 				// Sample of a contract's address deployed in Ropsten test network
-				var address = "0xeD08acB1e362000a8987933D566b5Dc59f29C844"
-				// Deployed Contract's Adress, substitute here with your contract's address
+				// var address = "0xeD08acB1e362000a8987933D566b5Dc59f29C844"
+				// Sample of a contract's address deployed in Eth Goerli test network
+    				var address = "0xecB5DF6F04A89735b9C3a2c70a8655AC0cEb6b50"
+    				// Deployed Contract's Adress, substitute here with your contract's address
 				// var address = "0xB40dCa2c4b6B84C1131eBDdCf3df6D2f294B0ba8"
 				$('#address').html(address)
 				// Deployed Contract's ABI
